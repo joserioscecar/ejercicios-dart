@@ -66,7 +66,7 @@ void main() {
     opcion = int.parse(stdin.readLineSync()!);
 
     if (opcion != 1 && opcion != 0) {
-      stdout.writeln("⚠ Opción inválida. Escribe 1 o 0.");
+      stdout.writeln("Opción inválida. Escribe 1 o 0.");
     }
 
     if (opcion == 1) {
