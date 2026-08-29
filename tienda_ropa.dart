@@ -1,31 +1,5 @@
 import 'dart:io';
 
-// Pide Si/No, sin importar mayúsculas o minúsculas.
-String pedirSiNo(String mensaje) {
-  String valor;
-  do {
-    stdout.write(mensaje);
-    valor = (stdin.readLineSync() ?? '').trim().toLowerCase();
-    if (valor != "si" && valor != "no") {
-      stdout.writeln("⚠ Responde solo con 'Si' o 'No'.");
-    }
-  } while (valor != "si" && valor != "no");
-  return valor == "si" ? "Si" : "No";
-}
-
-// Pide un decimal mayor a 0 (para precios).
-double pedirDecimal(String mensaje) {
-  double? valor;
-  do {
-    stdout.write(mensaje);
-    valor = double.tryParse(stdin.readLineSync() ?? '');
-    if (valor == null || valor <= 0) {
-      stdout.writeln("⚠ Ingresa un precio válido mayor a 0.");
-    }
-  } while (valor == null || valor <= 0);
-  return valor;
-}
-
 void registrarVenta() {
   stdout.writeln("");
   stdout.writeln("========================================");
@@ -38,27 +12,22 @@ void registrarVenta() {
   stdout.write("Talla (S/M/L/XL): ");
   var talla = stdin.readLineSync()!;
 
-  double precio = pedirDecimal("Precio original: \$");
+  stdout.write("Precio original: \$");
+  double precio = double.parse(stdin.readLineSync()!);
 
-  String aplicaDescuento = pedirSiNo("¿Aplica descuento? (Si/No): ");
+  stdout.write("¿Aplica descuento? (Si/No): ");
+  var aplicaDescuento = stdin.readLineSync()!;
 
   double porcentaje = 0;
   double precioFinal = precio;
 
-  if (aplicaDescuento == "Si") {
+  if (aplicaDescuento.toLowerCase() == "si") {
     stdout.writeln("Elige el porcentaje de descuento:");
     stdout.writeln("  1. 10%");
     stdout.writeln("  2. 20%");
     stdout.writeln("  3. 30%");
-
-    int? opcionDescuento;
-    do {
-      stdout.write("Opción: ");
-      opcionDescuento = int.tryParse(stdin.readLineSync() ?? '');
-      if (opcionDescuento != 1 && opcionDescuento != 2 && opcionDescuento != 3) {
-        stdout.writeln("⚠ Elige 1, 2 o 3.");
-      }
-    } while (opcionDescuento != 1 && opcionDescuento != 2 && opcionDescuento != 3);
+    stdout.write("Opción: ");
+    int opcionDescuento = int.parse(stdin.readLineSync()!);
 
     if (opcionDescuento == 1) porcentaje = 0.10;
     if (opcionDescuento == 2) porcentaje = 0.20;
@@ -85,7 +54,7 @@ void registrarVenta() {
   stdout.writeln("Producto:.......... $producto");
   stdout.writeln("Talla:.............. $talla");
   stdout.writeln("Precio original:.... \$$precioFormateado");
-  if (aplicaDescuento == "Si") {
+  if (aplicaDescuento.toLowerCase() == "si") {
     stdout.writeln("Descuento aplicado:. $porcentajeTexto");
   } else {
     stdout.writeln("Descuento aplicado:. Ninguno");
@@ -97,8 +66,10 @@ void registrarVenta() {
   stdout.writeln("========================================");
 }
 
-int mostrarMenu() {
+void main() {
   int? opcion;
+  int ventasRealizadas = 0;
+
   do {
     stdout.writeln("");
     stdout.writeln("========================================");
@@ -108,20 +79,11 @@ int mostrarMenu() {
     stdout.writeln("  0. Salir");
     stdout.writeln("========================================");
     stdout.write("Elige una opción: ");
-    opcion = int.tryParse(stdin.readLineSync() ?? '');
+    opcion = int.parse(stdin.readLineSync()!);
+
     if (opcion != 1 && opcion != 0) {
       stdout.writeln("⚠ Opción inválida. Escribe 1 o 0.");
     }
-  } while (opcion != 1 && opcion != 0);
-  return opcion!;
-}
-
-void main() {
-  int opcion;
-  int ventasRealizadas = 0;
-
-  do {
-    opcion = mostrarMenu();
 
     if (opcion == 1) {
       registrarVenta();

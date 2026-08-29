@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 void registrarVehiculo() {
@@ -46,8 +45,10 @@ void registrarVehiculo() {
   stdout.writeln("========================================");
 }
 
-int mostrarMenu() {
+void main() {
   int? opcion;
+  int registrosRealizados = 0;
+
   do {
     stdout.writeln("");
     stdout.writeln("========================================");
@@ -57,20 +58,11 @@ int mostrarMenu() {
     stdout.writeln("  0. Salir");
     stdout.writeln("========================================");
     stdout.write("Elige una opción: ");
-    opcion = int.tryParse(stdin.readLineSync() ?? '');
+    opcion = int.parse(stdin.readLineSync()!);
+
     if (opcion != 1 && opcion != 0) {
       stdout.writeln("⚠ Opción inválida. Escribe 1 o 0.");
     }
-  } while (opcion != 1 && opcion != 0);
-  return opcion!;
-}
-
-void main() {
-  int opcion;
-  int registrosRealizados = 0;
-
-  do {
-    opcion = mostrarMenu();
 
     if (opcion == 1) {
       registrarVehiculo();

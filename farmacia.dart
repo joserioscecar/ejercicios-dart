@@ -1,44 +1,5 @@
 import 'dart:io';
 
-// Pide un entero mayor a 0 (para cantidades).
-int pedirEntero(String mensaje) {
-  int? valor;
-  do {
-    stdout.write(mensaje);
-    valor = int.tryParse(stdin.readLineSync() ?? '');
-    if (valor == null || valor <= 0) {
-      stdout.writeln("⚠ Ingresa un número entero válido mayor a 0.");
-    }
-  } while (valor == null || valor <= 0);
-  return valor;
-}
-
-// Pide un decimal mayor a 0 (para precios).
-double pedirDecimal(String mensaje) {
-  double? valor;
-  do {
-    stdout.write(mensaje);
-    valor = double.tryParse(stdin.readLineSync() ?? '');
-    if (valor == null || valor <= 0) {
-      stdout.writeln("⚠ Ingresa un precio válido mayor a 0.");
-    }
-  } while (valor == null || valor <= 0);
-  return valor;
-}
-
-// Pide Si/No, sin importar mayúsculas o minúsculas.
-String pedirSiNo(String mensaje) {
-  String valor;
-  do {
-    stdout.write(mensaje);
-    valor = (stdin.readLineSync() ?? '').trim().toLowerCase();
-    if (valor != "si" && valor != "no") {
-      stdout.writeln("⚠ Responde solo con 'Si' o 'No'.");
-    }
-  } while (valor != "si" && valor != "no");
-  return valor == "si" ? "Si" : "No";
-}
-
 void registrarVenta() {
   stdout.writeln("");
   stdout.writeln("****************************************");
@@ -51,9 +12,14 @@ void registrarVenta() {
   stdout.write("Nombre del medicamento: ");
   var medicamento = stdin.readLineSync()!;
 
-  int cantidad = pedirEntero("Cantidad: ");
-  double precioUnitario = pedirDecimal("Precio unitario: \$");
-  String receta = pedirSiNo("¿Requiere receta médica? (Si/No): ");
+  stdout.write("Cantidad: ");
+  int cantidad = int.parse(stdin.readLineSync()!);
+
+  stdout.write("Precio unitario: \$");
+  double precioUnitario = double.parse(stdin.readLineSync()!);
+
+  stdout.write("¿Requiere receta médica? (Si/No): ");
+  var receta = stdin.readLineSync()!;
 
   double total = cantidad * precioUnitario;
   String totalFormateado = total.toStringAsFixed(2);
@@ -84,8 +50,10 @@ void registrarVenta() {
   stdout.writeln("****************************************");
 }
 
-int mostrarMenu() {
+void main() {
   int? opcion;
+  int ventasRealizadas = 0;
+
   do {
     stdout.writeln("");
     stdout.writeln("========================================");
@@ -95,20 +63,11 @@ int mostrarMenu() {
     stdout.writeln("  0. Salir");
     stdout.writeln("========================================");
     stdout.write("Elige una opción: ");
-    opcion = int.tryParse(stdin.readLineSync() ?? '');
+    opcion = int.parse(stdin.readLineSync()!);
+
     if (opcion != 1 && opcion != 0) {
       stdout.writeln("⚠ Opción inválida. Escribe 1 o 0.");
     }
-  } while (opcion != 1 && opcion != 0);
-  return opcion!;
-}
-
-void main() {
-  int opcion;
-  int ventasRealizadas = 0;
-
-  do {
-    opcion = mostrarMenu();
 
     if (opcion == 1) {
       registrarVenta();
