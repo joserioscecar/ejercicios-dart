@@ -48,6 +48,8 @@ void main() {
       stdout.writeln("Peso: $peso kg");
       stdout.writeln("Altura: $altura m");
       stdout.writeln("Tu IMC es: ${imc.toStringAsFixed(2)} - $categoriaIMC");
+      stdout.write("Presione una tecla para continuar...");
+      stdin.readLineSync()!;
     }
   } while (opcion != 0);
 }

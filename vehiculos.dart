@@ -43,6 +43,8 @@ void registrarVehiculo() {
   stdout.writeln("========================================");
   stdout.writeln("      Vehículo registrado con éxito");
   stdout.writeln("========================================");
+  stdout.write("Presione una tecla para continuar...");
+  stdin.readLineSync()!;
 }
 
 void main() {

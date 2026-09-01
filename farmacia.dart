@@ -48,6 +48,8 @@ void registrarVenta() {
   stdout.writeln("****************************************");
   stdout.writeln("     Gracias por su compra. ¡Cuídese!");
   stdout.writeln("****************************************");
+  stdout.write("Presione una tecla para continuar...");
+  stdin.readLineSync()!;
 }
 
 void main() {

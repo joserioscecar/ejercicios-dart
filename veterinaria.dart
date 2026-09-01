@@ -71,6 +71,8 @@ void registrarMascota() {
   stdout.writeln("========================================");
   stdout.writeln("   Mascota registrada correctamente ");
   stdout.writeln("========================================");
+  stdout.write("Presione una tecla para continuar...");
+  stdin.readLineSync()!;
 }
 
 void main() {
