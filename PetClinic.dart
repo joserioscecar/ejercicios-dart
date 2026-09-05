@@ -38,10 +38,10 @@ void main() {
     var edad = stdin.readLineSync()!;
 
     stdout.write("Identificación del dueño: ");
-    var identificacionDueno = stdin.readLineSync()!;
+    var identificacionPropietario = stdin.readLineSync()!;
 
     stdout.write("Nombre del dueño: ");
-    var dueno = stdin.readLineSync()!;
+    var propietario = stdin.readLineSync()!;
 
     stdout.write("Teléfono de contacto: ");
     var telefono = stdin.readLineSync()!;
@@ -68,8 +68,8 @@ void main() {
     stdout.writeln("Raza:............... $raza");
     stdout.writeln("Edad:............... $edad años");
     stdout.writeln("----------------------------------------");
-    stdout.writeln("Propietario:........ $dueno");
-    stdout.writeln("Identificación:..... $identificacionDueno");
+    stdout.writeln("Propietario:........ $propietario");
+    stdout.writeln("Identificación:..... $identificacionPropietario");
     stdout.writeln("Teléfono:........... $telefono");
     stdout.writeln("----------------------------------------");
     stdout.writeln("Motivo consulta:.... $motivo");
