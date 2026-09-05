@@ -57,11 +57,13 @@ void main() {
 
     stdout.writeln("");
     stdout.writeln("========================================");
-    stdout.writeln("      PetClinic - FICHA DE CONSULTA");
+    stdout.writeln("      PETCLINIC - FICHA DE CONSULTA");
     stdout.writeln("         FICHA DE CONSULTA");
     stdout.writeln("========================================");
     stdout.writeln("Fecha:............. $dia/$mes/${hoy.year}  $hora:$minuto");
     stdout.writeln("ID consulta:....... $idConsulta");
+    stdout.writeln("Motivo consulta:.... $motivo");
+
     stdout.writeln("----------------------------------------");
     stdout.writeln("Mascota:........... $mascota");
     stdout.writeln("Especie:............ $especie");
@@ -72,7 +74,7 @@ void main() {
     stdout.writeln("Identificación:..... $identificacionPropietario");
     stdout.writeln("Teléfono:........... $telefono");
     stdout.writeln("----------------------------------------");
-    stdout.writeln("Motivo consulta:.... $motivo");
+
     stdout.writeln("========================================");
     stdout.writeln("   Mascota registrada correctamente ");
     stdout.writeln("========================================");
