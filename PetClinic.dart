@@ -57,7 +57,7 @@ void main() {
 
     stdout.writeln("");
     stdout.writeln("========================================");
-    stdout.writeln("      VETERINARIA PATITAS FELICES");
+    stdout.writeln("      PetClinic - FICHA DE CONSULTA");
     stdout.writeln("         FICHA DE CONSULTA");
     stdout.writeln("========================================");
     stdout.writeln("Fecha:............. $dia/$mes/${hoy.year}  $hora:$minuto");
